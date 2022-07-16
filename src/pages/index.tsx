@@ -1,10 +1,14 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
+import Navbar from '../components/navbar';
+import Landing from '../pages/landing/Landing';
 
 const Home: NextPage = () => {
-  return <div>hello dinostudiosos front end sessions</div>;
+  return (
+    <div>
+      <Navbar />
+      <Landing />
+    </div>
+  );
 };
 
 export default Home;
