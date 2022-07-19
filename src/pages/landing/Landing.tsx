@@ -1,7 +1,12 @@
 import { FC } from 'react';
-import Navbar from '../../components/navbar';
+import TitleMain from '../../components/titleMain';
+
 const Landing: FC = () => {
-  return <div>soy landing</div>;
+  return (
+    <div>
+      <TitleMain text="2 multimedia Designer breakingtrouhg the fullstack development" />
+    </div>
+  );
 };
 
 export default Landing;

@@ -1,24 +1,14 @@
 import { FC } from 'react';
-
+import c from 'classnames';
 import styles from './titleB.module.scss';
 
-interface props {
+interface Props {
   text: string;
   bold?: boolean;
-  fontFamily?: string;
 }
 
-const TitleB: FC<props> = ({ text, bold = false, fontFamily }) => {
-  return;
-
-  <div>
-    <h2>
-      {' '}
-      {text} {bold}
-      {fontFamily}{' '}
-    </h2>
-    ;
-  </div>;
+const TitleB: FC<Props> = ({ text, bold = false }) => {
+  return <h2 className={c(styles.titleBstyle, bold)}>{text}</h2>;
 };
 
 export default TitleB;
