@@ -1,5 +1,6 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import ContentText from '../../components/contentText';
+import TitleB from '../../components/titleB';
 import TitleMain from '../../components/titleMain';
 import styles from './landing.module.scss';
 
@@ -13,6 +14,27 @@ const Landing: FC = () => {
         </div>
         <div className={styles.cB}>imagen</div>
       </div>
+      <PokeApi />
+    </div>
+  );
+};
+
+export const PokeApi = () => {
+  const [pokemon, setPokemon] = useState(null);
+  console.log({ pokemon });
+  useEffect(() => {
+    fetch('https://pokeapi.co/api/v2/pokemon/1/')
+      .then((response) => response.json())
+      .then((data) => {
+        setPokemon(data);
+      });
+  }, []);
+
+  return (
+    <div>
+      <TitleB text="Poke api, Fetch method" />
+      <hr />
+      {pokemon && <div></div>}
     </div>
   );
 };
