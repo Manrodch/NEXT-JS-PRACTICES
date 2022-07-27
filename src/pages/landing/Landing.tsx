@@ -9,34 +9,53 @@ const Landing: FC = () => {
     <div>
       <div className={styles.sectionAstyle}>
         <div className={styles.cA}>
-          <TitleMain text="2 multimedia Designer breakingtrouhg the fullstack development" />
-          <ContentText text="we are tired of working on this graphics shit in argentina so now we are studying to get out of this fucking place, to fuck whores and smoking pot" />
+          <TitleMain text="2 multimedia Depgner breakingtabilities the fullstack development" />
+          <ContentText text="we are tired of working on this graphics shit in argentina so now, we are studying to get out of this fucking place, to fuck whores and smoke pot" />
         </div>
         <div className={styles.cB}>imagen</div>
       </div>
       <PokeApi />
+      <EldenApi />
     </div>
   );
 };
 
 export const PokeApi = () => {
   const [pokemon, setPokemon] = useState(null);
-  console.log({ pokemon });
+  const [isLoading, setLoading] = useState(false);
+  const [id, setID] = useState(45);
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon/1/')
+    setLoading(true);
+    fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setPokemon(data);
+        setLoading(false);
       });
   }, []);
 
+  if (isLoading) return <p>Loading...</p>;
+  if (!pokemon) return <p>no profile</p>;
   return (
     <div>
       <TitleB text="Poke api, Fetch method" />
       <hr />
-      {pokemon && <div></div>}
+      <h3>{pokemon.name}</h3>
+      <img src={pokemon.sprites.frontdefault} alt={pokemon.name} />
     </div>
   );
+};
+
+export const EldenApi = () => {
+  const [elden, setElden] = useState(null);
+  console.log(elden);
+
+  useEffect(() => {
+    fetch('https://eldenring.fanapis.com/api/items?limit=2')
+      .then((response) => response.json())
+      .then((data) => setElden(data));
+  }, []);
+  return <div></div>;
 };
 
 export default Landing;
