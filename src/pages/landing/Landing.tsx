@@ -1,3 +1,4 @@
+import { ADDRCONFIG } from 'dns';
 import { FC, useEffect, useState } from 'react';
 import ContentText from '../../components/contentText';
 import TitleB from '../../components/titleB';
@@ -15,7 +16,6 @@ const Landing: FC = () => {
         <div className={styles.cB}>imagen</div>
       </div>
       <PokeApi />
-      <EldenApi />
     </div>
   );
 };
@@ -23,7 +23,17 @@ const Landing: FC = () => {
 export const PokeApi = () => {
   const [pokemon, setPokemon] = useState(null);
   const [isLoading, setLoading] = useState(false);
-  const [id, setID] = useState(45);
+  const [id, setId] = useState(1);
+
+  const handleNext = () => {
+    setId(id + 1);
+  };
+  const handleprevious = () => {
+    setId(id - 1);
+  };
+
+  console.log(id);
+
   useEffect(() => {
     setLoading(true);
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -32,7 +42,7 @@ export const PokeApi = () => {
         setPokemon(data);
         setLoading(false);
       });
-  }, []);
+  }, [id]);
 
   if (isLoading) return <p>Loading...</p>;
   if (!pokemon) return <p>no profile</p>;
@@ -40,22 +50,24 @@ export const PokeApi = () => {
     <div>
       <TitleB text="Poke api, Fetch method" />
       <hr />
-      <h3>{pokemon.name}</h3>
-      <img src={pokemon.sprites.frontdefault} alt={pokemon.name} />
+      <h3>{pokemon['name']}</h3>
+      <img src={pokemon.sprites.front_default} alt={pokemon['name']} />
+      <hr />
+      <button onClick={handleprevious}>previous</button>
+      <button onClick={handleNext}>next</button>
     </div>
   );
 };
 
-export const EldenApi = () => {
-  const [elden, setElden] = useState(null);
-  console.log(elden);
+// export const EldenApi = () => {
+//   const [elden, setElden] = useState(null);
 
-  useEffect(() => {
-    fetch('https://eldenring.fanapis.com/api/items?limit=2')
-      .then((response) => response.json())
-      .then((data) => setElden(data));
-  }, []);
-  return <div></div>;
-};
+//   useEffect(() => {
+//     fetch('https://eldenring.fanapis.com/api/items?limit=2')
+//       .then((response) => response.json())
+//       .then((data) => setElden(data));
+//   }, []);
+//   return <div></div>;
+// };
 
 export default Landing;
