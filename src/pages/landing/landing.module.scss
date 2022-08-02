@@ -1,0 +1,14 @@
+.sectionAstyle {
+  display: grid;
+  height: 514px;
+  grid-template-columns: 1fr 1fr;
+  .cA {
+    display: grid;
+    height: 514px;
+    grid-template-rows: 1fr 1fr;
+  }
+  .cB {
+    height: 514px;
+    background-color: chartreuse;
+  }
+}
