@@ -1,7 +1,9 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import ContentText from '../../components/contentText';
 import TitleMain from '../../components/titleMain';
 import PokeApiB from '../pokeApiB';
+import PokePot from '../../components/PokePot/PokePot';
+
 import styles from './landing.module.scss';
 
 const Landing: FC = () => {
@@ -10,11 +12,12 @@ const Landing: FC = () => {
       <div className={styles.sectionAstyle}>
         <div className={styles.cA}>
           <TitleMain text="Boom chakalala boom" />
-          <ContentText text="I just wanna fuck bitches and smoke pot " />
+          <ContentText text="ON DA WAY" />
         </div>
         <div className={styles.cB}>imagen</div>
       </div>
       <PokeApiB />
+      <PokePot />
     </div>
   );
 };
