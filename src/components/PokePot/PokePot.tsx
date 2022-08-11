@@ -5,6 +5,8 @@ import { pokemonInterface } from './types';
 const PokePot: FC = () => {
   const [pokemon, setPokemon] = useState<pokemonInterface | void>();
 
+  console.log('pokepot', pokemon);
+
   const fetchPokemon = async (id: number) => {
     const result: pokemonInterface | void = await getPokemon(id);
     setPokemon(result);
