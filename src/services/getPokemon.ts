@@ -7,8 +7,7 @@ export const getPokemon = async (id: number): Promise<pokemonInterface> => {
 };
 
 export const getPokemonByName = async (name: string): Promise<pokemonInterface> => {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/picachu`);
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
   const data = await response.json();
-  console.log(data);
   return data;
 };
