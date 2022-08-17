@@ -6,7 +6,7 @@ import PokemonInfo from '../../components/PokemonInfo';
 const Landing: FC = () => {
   const [pokemon, setPokemon] = useState<pokemonInterface | null>(null);
   const [id, setId] = useState<number>(1);
-  const [pokemonName, setPokemonName] = useState<pokemonInterface | null>(null);
+  // const [pokemonName, setPokemonName] = useState<pokemonInterface | null>(null);
   const [search, setSearch] = useState<string>('');
 
   const nextPokemon = () => {
@@ -21,10 +21,10 @@ const Landing: FC = () => {
   }, [id]);
 
   useEffect(() => {
-    getPokemonByName(search).then((data) => setPokemonName(data));
-  }, [search]);
+    getPokemonByName(search).then((data) => setPokemon(data));
 
-  console.log(pokemonName);
+    console.log(search);
+  }, [search]);
 
   return (
     <div>
